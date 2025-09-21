@@ -41,6 +41,7 @@ type Stat = {
   positive?: boolean;
   icon: React.ReactNode;
   bgClass?: string;
+  whiteOnDark?: boolean;
 };
 
 const stats: Stat[] = [
@@ -51,6 +52,7 @@ const stats: Stat[] = [
     positive: true,
     icon: <Users className="size-4" />,
     bgClass: "bg-[#E3F5FF]",
+    whiteOnDark: false,
   },
   {
     title: "Orders",
@@ -58,7 +60,8 @@ const stats: Stat[] = [
     delta: "-0.03%",
     positive: false,
     icon: <ShoppingCart className="size-4" />,
-    bgClass: "bg-[#F7F9FB]",
+    bgClass: "bg-[#F7F9FB] dark:bg-[#FFF]/5",
+    whiteOnDark: true,
   },
   {
     title: "Revenue",
@@ -66,7 +69,8 @@ const stats: Stat[] = [
     delta: "+15.03%",
     positive: true,
     icon: <DollarSign className="size-4" />,
-    bgClass: "bg-[#F7F9FB]",
+    bgClass: "bg-[#F7F9FB] dark:bg-[#FFF]/5",
+    whiteOnDark: true,
   },
   {
     title: "Growth",
@@ -75,6 +79,7 @@ const stats: Stat[] = [
     positive: true,
     icon: <LineChartIcon className="size-4" />,
     bgClass: "bg-[#E5ECF6]",
+    whiteOnDark: false,
   },
 ];
 
@@ -130,26 +135,55 @@ function StatCard({ stat }: { stat: Stat }) {
   return (
     <Card
       className={cn(
-        "border-transparent p-6 w-full h-full gap-2 rounded-[16px] shadow-none",
+        "border-transparent p-6 w-full h-full gap-2 rounded-[16px] shadow-none dark:border-white/5",
         stat.bgClass
       )}
     >
       <h1>
-        <CardTitle className="text-sm font-semibold text-[#1C1C1C] leading-[20px]">
+        <CardTitle
+          className={cn(
+            "text-sm font-semibold text-[#1C1C1C] leading-[20px]",
+            stat.whiteOnDark ? "dark:text-white" : "dark:text-[#1C1C1C]"
+          )}
+        >
           {stat.title}
         </CardTitle>
       </h1>
       <CardContent className="p-0">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-semibold tracking-tight">
+          <div
+            className={cn(
+              "text-2xl font-semibold tracking-tight",
+              stat.whiteOnDark ? "dark:text-white" : "dark:text-[#1C1C1C]"
+            )}
+          >
             {stat.value}
           </div>
-          <div className="flex items-center gap-2 text-xs">
-            <span>{stat.delta}</span>
+          <div className="flex items-center gap-2 text-xs ">
+            <span
+              className={cn(
+                "text-xs",
+                stat.whiteOnDark ? "dark:text-white" : "dark:text-[#1C1C1C]"
+              )}
+            >
+              {stat.delta}
+            </span>
             {stat.positive ? (
-              <TrendingUp className="size-4" />
+              <TrendingUp
+                size={16}
+                className={cn(
+                  "text-xs",
+                  stat.whiteOnDark ? "dark:text-white" : "dark:text-[#1C1C1C]"
+                )}
+              />
             ) : (
-              <TrendingDown className="size-4" />
+              <TrendingDown
+                size={16}
+                className={cn(
+                  "text-xs",
+                  stat.whiteOnDark ? "dark:text-white" : "dark:text-[#1C1C1C]"
+                )}
+              />
             )}
           </div>
         </div>
@@ -178,7 +212,7 @@ export default function DefaultDashboard() {
             <StatCard key={i} stat={s} />
           ))}
         </div>
-        <Card className="mt-2 md:mt-0 flex-1 min-w-0 gap-4 rounded-2xl bg-[#F7F9FB] shadow-none border-transparent">
+        <Card className="mt-2 md:mt-0 flex-1 min-w-0 gap-4 rounded-2xl bg-[#F7F9FB] dark:bg-[#fff]/5 shadow-none border-transparent">
           <CardHeader className="pb-0">
             <CardTitle className="text-sm font-medium">
               Projections vs Actuals
@@ -224,14 +258,14 @@ export default function DefaultDashboard() {
 
       {/* Row 2: Revenue line + Locations */}
       <div className="flex gap-7 justify-between max-h-[318px] h-full">
-        <Card className=" rounded-2xl gap-4 w-full bg-[#F7F9FB] p-6 shadow-none border-transparent">
+        <Card className=" rounded-2xl gap-4 w-full bg-[#F7F9FB] dark:bg-[#fff]/5 p-6 shadow-none border-transparent">
           <CardHeader className="pb-0 px-0">
             <div className="flex items-center gap-4">
               <CardTitle className="text-sm font-semibold">Revenue</CardTitle>
               <span className="h-6 w-px bg-border" />
               <div className="flex items-center gap-6 text-sm px-3">
                 <div className="flex items-center gap-2">
-                  <span className="inline-block size-2 rounded-full bg-black" />
+                  <span className="inline-block size-2 rounded-full bg-black dark:bg-[#C6C7F8]" />
                   <span>
                     Current Week <span className="font-semibold">$58,211</span>
                   </span>
@@ -304,7 +338,8 @@ export default function DefaultDashboard() {
                 <Line
                   type="monotoneX"
                   dataKey="prevSolid"
-                  stroke="#000000"
+                  stroke="currentColor"
+                  className="text-black dark:text-[#C6C7F8]"
                   strokeWidth={4}
                   dot={false}
                   strokeLinecap="round"
@@ -313,7 +348,8 @@ export default function DefaultDashboard() {
                 <Line
                   type="monotoneX"
                   dataKey="prevDot"
-                  stroke="#000000"
+                  stroke="currentColor"
+                  className="text-black dark:text-[#C6C7F8]"
                   strokeDasharray="6 6"
                   strokeWidth={4}
                   dot={false}
@@ -325,7 +361,7 @@ export default function DefaultDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-2xl min-w-[202px] bg-[#F7F9FB] p-6 gap-4 shadow-none border-transparent">
+        <Card className="rounded-2xl min-w-[202px] bg-[#F7F9FB] dark:bg-[#fff]/5 p-6 gap-4 shadow-none border-transparent">
           <CardHeader className="pb-0 px-0">
             <CardTitle className="text-sm font-medium">
               Revenue by Location
@@ -372,7 +408,7 @@ export default function DefaultDashboard() {
 
       {/* Row 3: Table + Donut */}
       <div className="flex gap-7 h-full">
-        <Card className=" rounded-2xl gap-4 w-full bg-[#F7F9FB] p-6 shadow-none border-transparent">
+        <Card className=" rounded-2xl gap-4 w-full bg-[#F7F9FB] dark:bg-[#fff]/5 p-6 shadow-none border-transparent">
           <CardHeader className="pb-0 px-0">
             <CardTitle className="text-sm font-semibold">
               Top Selling Products
@@ -382,16 +418,16 @@ export default function DefaultDashboard() {
             <Table className="w-full">
               <TableHeader className="border-b">
                 <TableRow className="text-xs">
-                  <TableHead className="w-[50%] text-xs text-[#1C1C1C66] font-normal">
+                  <TableHead className="w-[50%] text-xs text-[#1C1C1C66] dark:text-[#fff]/40 font-normal">
                     Name
                   </TableHead>
-                  <TableHead className="text-[#1C1C1C66] text-xs font-normal">
+                  <TableHead className="text-[#1C1C1C66] dark:text-[#fff]/40 text-xs font-normal">
                     Price
                   </TableHead>
-                  <TableHead className="text-[#1C1C1C66] text-xs font-normal">
+                  <TableHead className="text-[#1C1C1C66] dark:text-[#fff]/40 text-xs font-normal">
                     Quantity
                   </TableHead>
-                  <TableHead className="text-[#1C1C1C66] text-xs font-normal">
+                  <TableHead className="text-[#1C1C1C66] dark:text-[#fff]/40 text-xs font-normal">
                     Amount
                   </TableHead>
                 </TableRow>
@@ -400,7 +436,7 @@ export default function DefaultDashboard() {
                 {topSelling.map((p) => (
                   <TableRow
                     key={p.name}
-                    className="hover:bg-transparent border-none text-[#1C1C1C] !h-10"
+                    className="hover:bg-transparent border-none text-[#1C1C1C] dark:text-[#fff] !h-10"
                   >
                     <TableCell className="py-4 text-xs font-normal">
                       {p.name}
@@ -421,7 +457,7 @@ export default function DefaultDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="min-w-[202px] flex-1 rounded-2xl bg-[#F7F9FB] p-6 gap-4 shadow-none border-transparent">
+        <Card className="min-w-[202px] flex-1 rounded-2xl bg-[#F7F9FB] dark:bg-[#fff]/5 p-6 gap-4 shadow-none border-transparent">
           {" "}
           <CardHeader className="pb-0 px-0">
             <CardTitle className="text-sm font-semibold">Total Sales</CardTitle>

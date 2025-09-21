@@ -61,22 +61,26 @@ export default function Sidebar() {
           <div className="flex gap-4 px-2">
             <Button
               variant="ghost"
-              className="h-8 px-2 font-normal rounded-[8px] text-sm text-[#1C1C1C66] hover:text-[#1C1C1C66] hover:bg-[#1C1C1C]/5"
+              className="h-8 px-2 font-normal rounded-[8px] text-sm dark:text-[#fff]/40 text-[#1C1C1C66] hover:text-[#1C1C1C66] hover:bg-[#1C1C1C]/5 dark:hover:bg-[#fff]/40"
             >
               Favorites
             </Button>
             <Button
               variant="ghost"
-              className="h-8 px-2 font-normal rounded-[8px] text-sm text-[#1C1C1C33] hover:text-[#1C1C1C33] hover:bg-[#1C1C1C]/5"
+              className="h-8 px-2 font-normal rounded-[8px] text-sm dark:text-[#fff]/40 text-[#1C1C1C33] hover:text-[#1C1C1C33] hover:bg-[#1C1C1C]/5 dark:hover:bg-[#fff]/40"
             >
               Recently
             </Button>
           </div>
           <SidebarGroupContent>
             <SidebarMenu>
-              <ul className="list-disc pl-6 marker:text-[#1C1C1C33] mt-2 mx-2 my-1">
-                <li className="text-sm text-[#1C1C1C] px-2 py-1">Overview</li>
-                <li className="text-sm text-[#1C1C1C] px-2 py-1">Projects</li>
+              <ul className="list-disc pl-6 marker:text-[#1C1C1C33] dark:marker:text-white mt-2 mx-2 my-1">
+                <li className="text-sm text-[#1C1C1C] dark:text-white px-2 py-1">
+                  Overview
+                </li>
+                <li className="text-sm text-[#1C1C1C] dark:text-white px-2 py-1">
+                  Projects
+                </li>
               </ul>
             </SidebarMenu>
           </SidebarGroupContent>
@@ -92,7 +96,7 @@ export default function Sidebar() {
                 <SidebarMenuButton
                   isActive={currentModule !== "order-history"}
                   onClick={() => setCurrentModule("")}
-                  className="pl-7 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center"
+                  className="pl-7 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center dark:hover:text-black"
                 >
                   <ChartPie />
                   <span className="group-data-[collapsible=icon]:hidden">
@@ -102,7 +106,7 @@ export default function Sidebar() {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
-                  <ChevronRightIcon className="size-4 text-muted-foreground group-data-[collapsible=icon]:hidden" />
+                  <ChevronRightIcon className="size-4 group-data-[collapsible=icon]:hidden" />
                   <ShoppingBag />
                   <span className="group-data-[collapsible=icon]:hidden">
                     eCommerce
@@ -111,7 +115,7 @@ export default function Sidebar() {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
-                  <ChevronRightIcon className="size-4 text-muted-foreground group-data-[collapsible=icon]:hidden" />
+                  <ChevronRightIcon className="size-4 group-data-[collapsible=icon]:hidden" />
                   <Folder />
                   <span className="group-data-[collapsible=icon]:hidden">
                     Projects
@@ -120,7 +124,7 @@ export default function Sidebar() {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
-                  <ChevronRightIcon className="size-4 text-muted-foreground group-data-[collapsible=icon]:hidden" />
+                  <ChevronRightIcon className="size-4  group-data-[collapsible=icon]:hidden" />
                   <BookOpen />
                   <span className="group-data-[collapsible=icon]:hidden">
                     Online Courses
@@ -144,7 +148,7 @@ export default function Sidebar() {
                 >
                   <ChevronRightIcon
                     className={cn(
-                      "size-4 transition-transform text-muted-foreground group-data-[collapsible=icon]:hidden",
+                      "size-4 transition-transform  group-data-[collapsible=icon]:hidden",
                       profileOpen && "rotate-90"
                     )}
                   />
@@ -186,7 +190,7 @@ export default function Sidebar() {
 
               <SidebarMenuItem>
                 <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
-                  <ChevronRightIcon className="size-4 text-muted-foreground group-data-[collapsible=icon]:hidden" />
+                  <ChevronRightIcon className="size-4  group-data-[collapsible=icon]:hidden" />
                   <Contact />
                   <span className="group-data-[collapsible=icon]:hidden">
                     Account
@@ -195,7 +199,7 @@ export default function Sidebar() {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
-                  <ChevronRightIcon className="size-4 text-muted-foreground group-data-[collapsible=icon]:hidden" />
+                  <ChevronRightIcon className="size-4  group-data-[collapsible=icon]:hidden" />
 
                   <UsersRound />
                   <span className="group-data-[collapsible=icon]:hidden">
@@ -205,7 +209,7 @@ export default function Sidebar() {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
-                  <ChevronRightIcon className="size-4 text-muted-foreground group-data-[collapsible=icon]:hidden" />
+                  <ChevronRightIcon className="size-4  group-data-[collapsible=icon]:hidden" />
                   <BookText />
                   <span className="group-data-[collapsible=icon]:hidden">
                     Blog
@@ -214,7 +218,7 @@ export default function Sidebar() {
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
-                  <ChevronRightIcon className="size-4 text-muted-foreground group-data-[collapsible=icon]:hidden" />
+                  <ChevronRightIcon className="size-4  group-data-[collapsible=icon]:hidden" />
                   <MessageCircle />
                   <span className="group-data-[collapsible=icon]:hidden">
                     Social

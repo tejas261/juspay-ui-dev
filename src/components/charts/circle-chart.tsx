@@ -13,7 +13,6 @@ export function Donut({
   size = 112,
   thickness = 18, // (1) wider slices: was 14
   gapPx = 4,
-  bg = "#F7F9FB",
 }: {
   data: Seg[];
   size?: number;
@@ -86,53 +85,58 @@ export function Donut({
   return (
     <div className="relative group">
       <svg viewBox={`0 0 ${w} ${h}`} width={w} height={h}>
-        {/* background trough */}
-        <circle
-          cx={cx}
-          cy={cy}
-          r={r}
-          fill="none"
-          stroke={bg}
-          strokeWidth={Math.max(1, thickness - 4)} // thinner than slices
-        />
-
         {/* slices as FILLED paths (not strokes) */}
         <g fill="none">
-          {arcs.map((s, i) => (
-            <path
-              key={s.name}
-              d={ringSlicePath(
-                cx,
-                cy,
-                r,
-                hovered === i ? thickness + 2 : thickness,
-                s.start,
-                s.end,
-                "outer",
-                "inner"
-              )}
-              fill={data[i].color}
-              onMouseEnter={() => {
-                const pt = polarToCartesian(
+          {arcs.map((s, i) => {
+            const color = data[i].color;
+            // normalize and check if this slice is the "black" one
+            const c = color.toLowerCase();
+            const isBlack =
+              c === "#111111" ||
+              c === "#000000" ||
+              c === "#111" ||
+              c === "#000" ||
+              c === "black";
+
+            return (
+              <path
+                key={s.name}
+                d={ringSlicePath(
                   cx,
                   cy,
-                  r + thickness / 2 + 4,
-                  s.angleCenter
-                );
-                const x = (pt.x / w) * 100;
-                const y = (pt.y / h) * 100;
-                const pct = Math.round((s.amount / total) * 100 * 10) / 10;
-                setLabel({ xPct: x, yPct: y, pct });
-                setVisible(true);
-                setHovered(i);
-              }}
-              onMouseLeave={() => {
-                setVisible(false);
-                setHovered(null);
-              }}
-              style={{ transition: "d 200ms ease-out" }}
-            />
-          ))}
+                  r,
+                  hovered === i ? thickness + 2 : thickness,
+                  s.start,
+                  s.end,
+                  "outer",
+                  "inner"
+                )}
+                fill={isBlack ? "currentColor" : color}
+                className={
+                  isBlack ? "text-[#111111] dark:text-[#C6C7F8]" : undefined
+                }
+                onMouseEnter={() => {
+                  const pt = polarToCartesian(
+                    cx,
+                    cy,
+                    r + thickness / 2 + 4,
+                    s.angleCenter
+                  );
+                  const x = (pt.x / w) * 100;
+                  const y = (pt.y / h) * 100;
+                  const pct = Math.round((s.amount / total) * 1000) / 10;
+                  setLabel({ xPct: x, yPct: y, pct });
+                  setVisible(true);
+                  setHovered(i);
+                }}
+                onMouseLeave={() => {
+                  setVisible(false);
+                  setHovered(null);
+                }}
+                style={{ transition: "d 200ms ease-out" }}
+              />
+            );
+          })}
         </g>
       </svg>
 

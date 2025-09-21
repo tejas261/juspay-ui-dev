@@ -84,7 +84,6 @@ const Navbar = () => {
           </Button>
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="size-4" />
-            <span className="absolute right-2 top-2 size-2 rounded-full bg-emerald-500" />
           </Button>
           <Button
             variant="ghost"
