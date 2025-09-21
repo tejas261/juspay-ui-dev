@@ -14,16 +14,12 @@ export function Donut({
   thickness = 18, // (1) wider slices: was 14
   gapPx = 4,
   bg = "#F7F9FB",
-  capStart = "outer",
-  capEnd = "inner",
 }: {
   data: Seg[];
   size?: number;
   thickness?: number;
   gapPx?: number;
   bg?: string;
-  capStart?: "outer" | "inner";
-  capEnd?: "outer" | "inner";
 }) {
   const [hovered, setHovered] = React.useState<number | null>(null);
   const [label, setLabel] = React.useState({ xPct: 50, yPct: 50, pct: 0 });
@@ -36,14 +32,13 @@ export function Donut({
   const r = (size - thickness) / 2; // leave room so caps don't clip
   const total = data.reduce((s, d) => s + d.amount, 0);
 
-  // Increase effective angular gap so rounded caps don't visually close it.
-  // Use ~30% of thickness so even small slices still show a gap.
-  const gapAngle = (gapPx + thickness * 0.3) / r; // adjusted gap at centerline
+  // gap along the arc must include the two round caps (≈ thickness px total)
+  const gapAngle = gapPx / r; // pixel gap at centerline
 
   let cursor = -Math.PI / 2;
   const arcs = data.map((d) => {
     const raw = (d.amount / total) * TAU;
-    const inner = Math.max(0.04, raw - gapAngle);
+    const inner = Math.max(0, raw - gapAngle);
     const start = cursor + gapAngle / 2;
     const end = start + inner;
     cursor += raw;
@@ -102,7 +97,7 @@ export function Donut({
         />
 
         {/* slices as FILLED paths (not strokes) */}
-        <g>
+        <g fill="none">
           {arcs.map((s, i) => (
             <path
               key={s.name}
@@ -113,8 +108,8 @@ export function Donut({
                 hovered === i ? thickness + 2 : thickness,
                 s.start,
                 s.end,
-                capStart,
-                capEnd
+                "outer",
+                "inner"
               )}
               fill={data[i].color}
               onMouseEnter={() => {
@@ -135,6 +130,7 @@ export function Donut({
                 setVisible(false);
                 setHovered(null);
               }}
+              style={{ transition: "d 200ms ease-out" }}
             />
           ))}
         </g>

@@ -438,8 +438,8 @@ export default function DefaultDashboard() {
                   size={112}
                   thickness={22}
                   gapPx={18}
-                  capStart="outer"
-                  capEnd="inner"
+                  // capStart="outer"
+                  // capEnd="inner"
                   bg="#F7F9FB"
                 />
               </div>
