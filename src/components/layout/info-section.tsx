@@ -155,9 +155,9 @@ export default function InfoSection() {
 
   return (
     <UISidebar side="right" collapsible="offcanvas" className="border-l">
-      <SidebarContent className="p-6">
+      <SidebarContent className="p-6 flex flex-col gap-6">
         <section>
-          <h2 className="text-sm font-normal">Notifications</h2>
+          <h2 className="text-sm font-semibold">Notifications</h2>
           <ul className="mt-4 space-y-6">
             {notifications.map((n, i) => (
               <NotificationRow key={i} item={n} />
@@ -165,10 +165,8 @@ export default function InfoSection() {
           </ul>
         </section>
 
-        <div className="my-6 h-px bg-border" />
-
         <section>
-          <h2 className="text-sm font-normal">Activities</h2>
+          <h2 className="text-sm font-semibold">Activities</h2>
           <ul className="mt-4 space-y-5">
             {activities.map((a, i) => (
               <ActivityRow
@@ -181,10 +179,8 @@ export default function InfoSection() {
           </ul>
         </section>
 
-        <div className="my-6 h-px bg-border" />
-
         <section>
-          <h2 className="text-sm font-normal">Contacts</h2>
+          <h2 className="text-sm font-semibold">Contacts</h2>
           <ul className="mt-4 space-y-4">
             {contacts.map((c) => {
               const first = c.name.split(" ")[0].toLowerCase();
@@ -196,7 +192,7 @@ export default function InfoSection() {
                     alt={c.name}
                     className="size-6 rounded-full object-cover"
                   />
-                  <div className="text-sm">{c.name}</div>
+                  <div className="text-sm font-normal">{c.name}</div>
                 </li>
               );
             })}
