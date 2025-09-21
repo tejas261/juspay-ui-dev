@@ -1,69 +1,148 @@
-# React + TypeScript + Vite
+# Juspay UI Developer Assignment — Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a responsive, modern UI dashboard built with **React**, **TypeScript**, **Vite**, and **Tailwind CSS** for Juspay’s UI Developer assignment.
 
-Currently, two official plugins are available:
+It includes an e-commerce dashboard overview and an order history page, both designed with interactive charts, paginated and filterable tables, and reusable UI components.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Modern React (v19) with TypeScript** for robust app structure.
+- **Vite** fast build tooling.
+- **Tailwind CSS** for rapid, responsive styling.
+- **Radix UI** component primitives and **Lucide** icons.
+- **Recharts** for visualizing key metrics (bar, line, donut).
+- Fully responsive layout: sidebar, navbar, info panel.
+- **Order History** page: paginated, searchable, filterable, and sortable.
+- **Interactive UI component library**: buttons, inputs, forms, avatars, dialogs, etc.
+- Accessible and theme-ready (supports light/dark mode).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Local Setup & Development
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
+
+```sh
+git clone https://github.com/tejas261/juspay-ui-dev.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm install
 ```
+
+### 3. Start development server
+
+```sh
+npm run dev
+```
+
+Visit [http://localhost:5173](http://localhost:5173) to view the app.
+
+### 4. Build for production
+
+```sh
+npm run build
+```
+
+### 5. Preview production build
+
+```sh
+npm run preview
+```
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+  components/
+    charts/           # Custom chart components
+    layout/           # Navbar, Sidebar, InfoSection
+    pages/            # Dashboard & OrderHistory page
+    ui/               # Reusable UI primitives
+  contexts/           # React contexts (e.g. UI state)
+  hooks/              # Custom hooks
+  lib/                # Utility functions
+  App.tsx             # Root component
+  main.tsx            # Startup entry
+public/               # Static images/icons
+  activities/
+  contacts/
+```
+
+---
+
+## 🖥️ Page Overview
+
+### Dashboard (default page)
+
+- **Stats cards**: Key metrics (Customers, Orders, Revenue, Growth) with trend indicators.
+- **Projections vs Actuals**: Comparative bar chart.
+- **Revenue Trends**: Line/area chart for weekly revenue.
+- **Revenue by Location**: Progress bars by city.
+- **Top Selling Products**: Table of products.
+- **Sales Breakdown**: Donut chart visualizing channels.
+
+### Order History
+
+- **Order list**: Paginated, filterable, and sortable order table.
+- **Search**: Quick search by id, user, project, address, date, or status.
+- **Multiple filters**: Date, Status.
+- **Selection**: Bulk or item selection (checkboxes).
+- **Actionable UI**: Placeholder for actions (add, more, sort, filters).
+
+---
+
+## ⚙️ Design Decisions & Challenges
+
+- **Componentization**: Every visual element (charts, tables, stats, etc.) is a reusable, typed component for maintainability and extensibility.
+- **Tailwind + Radix**: Combined for rapid styling and robust, accessible primitives.
+- **State Management**: Local state + a small context for global navigation.
+- **Accessibility**: Leveraged Radix and best practices for focus, roles, and keyboard nav.
+- **Responsiveness**: Built entirely mobile-first with breakpoints for a dashboard context.
+- **Data Gen**: Seeded with deterministic dummy data for tables and charts.
+- **Charts**: Used Recharts for flexibility and quick customization.
+- **Dark Mode**: Using
+
+### Improvements & Next Steps
+
+- Hook up to a real API (currently all data is static/fake).
+- Add unit & integration tests (none present).
+- Add login/auth flows before dashboard access.
+- Enhanced error boundaries & loading states.
+- Expand components for more pages (user/profile management, settings, etc.)
+- Make theme switcher UI exposed in app.
+
+---
+
+## 📝 Scripts
+
+- `npm run dev` – Start local server.
+- `npm run build` – Production build.
+- `npm run preview` – Preview built app.
+- `npm run lint` – Run ESLint on all files.
+
+---
+
+## 📦 Tech Stack
+
+- [React](https://react.dev/) 19 + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Radix UI](https://www.radix-ui.com/) Primitives
+- [Recharts](https://recharts.org/) Charts
+- [Lucide icons](https://lucide.dev/)
+- [ESLint](https://eslint.org/)
+- [Lucide Icons](https://lucide.dev/) (For icons)
+
+---
+
+## 👤 Author
+
+Assignment by Juspay.  
+Developed by Tejas M.
