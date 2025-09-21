@@ -436,7 +436,7 @@ export default function DefaultDashboard() {
                 {topSelling.map((p) => (
                   <TableRow
                     key={p.name}
-                    className="hover:bg-transparent border-none text-[#1C1C1C] dark:text-[#fff] !h-10"
+                    className="border-none text-[#1C1C1C] dark:text-[#fff] !h-10"
                   >
                     <TableCell className="py-4 text-xs font-normal">
                       {p.name}
