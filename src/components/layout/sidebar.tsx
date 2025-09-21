@@ -96,7 +96,8 @@ export default function Sidebar() {
                 <SidebarMenuButton
                   isActive={currentModule !== "order-history"}
                   onClick={() => setCurrentModule("")}
-                  className="pl-7 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center dark:hover:text-black"
+                  tooltip="Default"
+                  className="pl-7 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center"
                 >
                   <ChartPie />
                   <span className="group-data-[collapsible=icon]:hidden">
@@ -105,7 +106,10 @@ export default function Sidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
+                <SidebarMenuButton
+                  tooltip="eCommerce"
+                  className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center"
+                >
                   <ChevronRightIcon className="size-4 group-data-[collapsible=icon]:hidden" />
                   <ShoppingBag />
                   <span className="group-data-[collapsible=icon]:hidden">
@@ -114,7 +118,10 @@ export default function Sidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
+                <SidebarMenuButton
+                  tooltip="Projects"
+                  className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center"
+                >
                   <ChevronRightIcon className="size-4 group-data-[collapsible=icon]:hidden" />
                   <Folder />
                   <span className="group-data-[collapsible=icon]:hidden">
@@ -123,7 +130,10 @@ export default function Sidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
+                <SidebarMenuButton
+                  tooltip="Online Courses"
+                  className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center"
+                >
                   <ChevronRightIcon className="size-4  group-data-[collapsible=icon]:hidden" />
                   <BookOpen />
                   <span className="group-data-[collapsible=icon]:hidden">
@@ -144,6 +154,7 @@ export default function Sidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton
                   onClick={() => setProfileOpen((o) => !o)}
+                  tooltip="User Profile"
                   className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center"
                 >
                   <ChevronRightIcon
@@ -189,7 +200,10 @@ export default function Sidebar() {
               </SidebarMenuItem>
 
               <SidebarMenuItem>
-                <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
+                <SidebarMenuButton
+                  tooltip="Account"
+                  className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center"
+                >
                   <ChevronRightIcon className="size-4  group-data-[collapsible=icon]:hidden" />
                   <Contact />
                   <span className="group-data-[collapsible=icon]:hidden">
@@ -198,7 +212,10 @@ export default function Sidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
+                <SidebarMenuButton
+                  tooltip="Corporate"
+                  className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center"
+                >
                   <ChevronRightIcon className="size-4  group-data-[collapsible=icon]:hidden" />
 
                   <UsersRound />
@@ -208,7 +225,10 @@ export default function Sidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
+                <SidebarMenuButton
+                  tooltip="Blog"
+                  className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center"
+                >
                   <ChevronRightIcon className="size-4  group-data-[collapsible=icon]:hidden" />
                   <BookText />
                   <span className="group-data-[collapsible=icon]:hidden">
@@ -217,7 +237,10 @@ export default function Sidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center">
+                <SidebarMenuButton
+                  tooltip="Social"
+                  className="pl-1 group-data-[collapsible=icon]:pl-2 group-data-[collapsible=icon]:justify-center"
+                >
                   <ChevronRightIcon className="size-4  group-data-[collapsible=icon]:hidden" />
                   <MessageCircle />
                   <span className="group-data-[collapsible=icon]:hidden">

@@ -11,22 +11,41 @@ import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Bell, PanelRight, History, Search, Star, Sun } from "lucide-react";
 import { useGlobalContext } from "@/contexts/global-context";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const Navbar = () => {
   function toggle() {
     const root = document.documentElement;
     root.classList.toggle("dark");
   }
-  const { setCurrentModule, currentModule } = useGlobalContext();
+  const { setCurrentModule } = useGlobalContext();
 
   return (
     <header className="sticky top-0 z-30 w-full border-b bg-background">
       <div className="flex h-[68px] items-center gap-2 px-4 md:px-6">
         <div className="flex items-center gap-1.5">
-          <SidebarTrigger />
-          <Button variant="ghost" size="icon" className="hidden md:inline-flex">
-            <Star className="size-4" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <SidebarTrigger />
+            </TooltipTrigger>
+            <TooltipContent>Toggle sidebar</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden md:inline-flex"
+              >
+                <Star className="size-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Favorites</TooltipContent>
+          </Tooltip>
           <div className="hidden sm:block">
             <Breadcrumb>
               <BreadcrumbList>
@@ -64,56 +83,76 @@ const Navbar = () => {
               <span>/</span>
             </div>
           </div>
-          <Button
-            onClick={toggle}
-            variant="ghost"
-            size="icon"
-            className="hidden sm:inline-flex"
-          >
-            <Sun className="size-4" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hidden sm:inline-flex"
-            aria-label="Order History"
-            onClick={() => {
-              if (currentModule == "order-history") {
-                setCurrentModule("");
-              } else {
-                setCurrentModule("order-history");
-              }
-            }}
-          >
-            <History className="size-4" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="inline-flex sm:hidden"
-            aria-label="Order History"
-            onClick={() => setCurrentModule("order-history")}
-          >
-            <History className="size-4" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="relative hidden sm:inline-flex"
-            aria-label="Notifications"
-          >
-            <Bell className="size-4" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label="Toggle right sidebar"
-            onClick={() =>
-              window.dispatchEvent(new Event("toggle-right-sidebar"))
-            }
-          >
-            <PanelRight className="size-4" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                onClick={toggle}
+                variant="ghost"
+                size="icon"
+                className="hidden sm:inline-flex"
+              >
+                <Sun className="size-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Toggle theme</TooltipContent>
+          </Tooltip>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden sm:inline-flex"
+                aria-label="Order History"
+                onClick={() => setCurrentModule("order-history")}
+              >
+                <History className="size-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Order history</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="inline-flex sm:hidden"
+                aria-label="Order History"
+                onClick={() => setCurrentModule("order-history")}
+              >
+                <History className="size-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Order history</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="relative hidden sm:inline-flex"
+                aria-label="Notifications"
+              >
+                <Bell className="size-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Notifications</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Toggle right sidebar"
+                onClick={() =>
+                  window.dispatchEvent(new Event("toggle-right-sidebar"))
+                }
+              >
+                <PanelRight className="size-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Toggle right sidebar</TooltipContent>
+          </Tooltip>
         </div>
       </div>
     </header>
