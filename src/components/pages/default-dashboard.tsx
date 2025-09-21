@@ -206,8 +206,8 @@ export default function DefaultDashboard() {
       <div className="text-sm font-semibold">eCommerce</div>
 
       {/* Row 1: Stats + Bar */}
-      <div className="flex flex-col gap-7 md:flex-row max-h-[252px] h-full">
-        <div className="grid grid-cols-2 gap-7 w-1/2">
+      <div className="flex flex-col gap-4 md:gap-7 md:flex-row md:max-h-[252px]">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 w-full md:w-1/2">
           {stats.map((s, i) => (
             <StatCard key={i} stat={s} />
           ))}
@@ -257,7 +257,7 @@ export default function DefaultDashboard() {
       </div>
 
       {/* Row 2: Revenue line + Locations */}
-      <div className="flex gap-7 justify-between max-h-[318px] h-full">
+      <div className="flex flex-col lg:flex-row gap-4 md:gap-7 justify-between md:max-h-[318px]">
         <Card className=" rounded-2xl gap-4 w-full bg-[#F7F9FB] dark:bg-[#fff]/5 p-6 shadow-none border-transparent">
           <CardHeader className="pb-0 px-0">
             <div className="flex items-center gap-4">
@@ -361,7 +361,7 @@ export default function DefaultDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="rounded-2xl min-w-[202px] bg-[#F7F9FB] dark:bg-[#fff]/5 p-6 gap-4 shadow-none border-transparent">
+        <Card className="rounded-2xl min-w-[202px] bg-[#F7F9FB] dark:bg-[#fff]/5 p-6 gap-4 shadow-none border-transparent mt-4 lg:mt-0 w-full lg:w-auto">
           <CardHeader className="pb-0 px-0">
             <CardTitle className="text-sm font-medium">
               Revenue by Location
@@ -375,7 +375,7 @@ export default function DefaultDashboard() {
                   <img
                     src="/Map.png"
                     alt="World Map"
-                    className=" object-cover w-[154px] h-[82px]"
+                    className=" object-contain w-full h-[82px]"
                   />
                 </div>
               </div>
@@ -407,7 +407,7 @@ export default function DefaultDashboard() {
       </div>
 
       {/* Row 3: Table + Donut */}
-      <div className="flex gap-7 h-full">
+      <div className="flex flex-col lg:flex-row gap-4 md:gap-7">
         <Card className=" rounded-2xl gap-4 w-full bg-[#F7F9FB] dark:bg-[#fff]/5 p-6 shadow-none border-transparent">
           <CardHeader className="pb-0 px-0">
             <CardTitle className="text-sm font-semibold">
@@ -457,7 +457,7 @@ export default function DefaultDashboard() {
           </CardContent>
         </Card>
 
-        <Card className="min-w-[202px] flex-1 rounded-2xl bg-[#F7F9FB] dark:bg-[#fff]/5 p-6 gap-4 shadow-none border-transparent">
+        <Card className="min-w-[202px] flex-1 rounded-2xl bg-[#F7F9FB] dark:bg-[#fff]/5 p-6 gap-4 shadow-none border-transparent mt-4 lg:mt-0">
           {" "}
           <CardHeader className="pb-0 px-0">
             <CardTitle className="text-sm font-semibold">Total Sales</CardTitle>

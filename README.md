@@ -103,7 +103,7 @@ public/               # Static images/icons
 - **Componentization**: Every visual element (charts, tables, stats, etc.) is a reusable, typed component for maintainability and extensibility.
 - **Tailwind + Radix**: Combined for rapid styling and robust, accessible primitives.
 - **Accessibility**: Leveraged Radix and best practices for focus, roles, and keyboard nav.
-- **Responsiveness**: Built entirely mobile-first with breakpoints for a dashboard context.
+- **Responsiveness**: Built entirely responsive with breakpoints for mobile and tablet devices for a dashboard context.
 - **Data Gen**: Seeded with deterministic dummy data for tables and charts.
 - **Charts**: Used Recharts for flexibility and quick customization.
 - **Dark Mode**: Implementing dark mode was a bit challenging
@@ -113,7 +113,6 @@ public/               # Static images/icons
 - Hook up to a real API (currently all data is static/fake).
 - Add unit & integration tests (none present).
 - Add login/auth flows before dashboard access.
-- Enhanced error boundaries & loading states.
 - Expand components for more pages (user/profile management, settings, etc.)
 - Make theme switcher UI exposed in app.
 

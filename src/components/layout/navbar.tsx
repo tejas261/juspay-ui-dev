@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Bell, PanelRight, RotateCcw, Search, Star, Sun } from "lucide-react";
+import { Bell, PanelRight, History, Search, Star, Sun } from "lucide-react";
 import { useGlobalContext } from "@/contexts/global-context";
 
 const Navbar = () => {
@@ -18,7 +18,7 @@ const Navbar = () => {
     const root = document.documentElement;
     root.classList.toggle("dark");
   }
-  const { setCurrentModule } = useGlobalContext();
+  const { setCurrentModule, currentModule } = useGlobalContext();
 
   return (
     <header className="sticky top-0 z-30 w-full border-b bg-background">
@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="flex-1" />
 
         <div className="ml-auto flex items-center gap-1.5 ">
-          <div className="relative mr-2 hidden md:block w-40">
+          <div className="relative mr-2 hidden lg:block w-40">
             <Search className="text-muted-foreground pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" />
             <Input
               placeholder="Search"
@@ -78,11 +78,31 @@ const Navbar = () => {
             size="icon"
             className="hidden sm:inline-flex"
             aria-label="Order History"
+            onClick={() => {
+              if (currentModule == "order-history") {
+                setCurrentModule("");
+              } else {
+                setCurrentModule("order-history");
+              }
+            }}
+          >
+            <History className="size-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="inline-flex sm:hidden"
+            aria-label="Order History"
             onClick={() => setCurrentModule("order-history")}
           >
-            <RotateCcw className="size-4" />
+            <History className="size-4" />
           </Button>
-          <Button variant="ghost" size="icon" className="relative">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="relative hidden sm:inline-flex"
+            aria-label="Notifications"
+          >
             <Bell className="size-4" />
           </Button>
           <Button

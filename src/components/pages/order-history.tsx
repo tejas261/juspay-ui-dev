@@ -284,7 +284,7 @@ export default function OrderHistory() {
     <div className="flex flex-col gap-4">
       <h1 className="text-base font-semibold">Order List</h1>
 
-      <div className="flex items-center justify-between bg-[#F7F9FB] dark:bg-[#FFFFFF]/5 p-2 rounded-[8px]">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between bg-[#F7F9FB] dark:bg-[#FFFFFF]/5 p-2 rounded-[8px]">
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" aria-label="Add">
             <Plus className="size-4" />
@@ -354,7 +354,7 @@ export default function OrderHistory() {
           </Button>
         </div>
 
-        <div className="relative w-48">
+        <div className="relative w-full sm:w-60 md:w-72">
           <Search className="text-muted-foreground dark:text-white pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" />
           <Input
             placeholder="Search"
@@ -368,8 +368,8 @@ export default function OrderHistory() {
         </div>
       </div>
 
-      <div className="rounded-2xl bg-transparent p-0 border border-transparent">
-        <Table className="w-full">
+      <div className="rounded-2xl bg-transparent p-0 border border-transparent overflow-x-auto">
+        <Table className="w-full min-w-[720px] md:min-w-0">
           <TableHeader className="border-b">
             <TableRow className="text-xs">
               <TableHead className="w-8">
@@ -411,7 +411,7 @@ export default function OrderHistory() {
                   onClick={() => toggleSort("user")}
                 />
               </TableHead>
-              <TableHead className="dark:text-white/40">
+              <TableHead className="dark:text-white/40 hidden md:table-cell">
                 <HeaderSort
                   label="Project"
                   active={sortKey === "project"}
@@ -419,7 +419,7 @@ export default function OrderHistory() {
                   onClick={() => toggleSort("project")}
                 />
               </TableHead>
-              <TableHead>
+              <TableHead className="hidden md:table-cell">
                 <HeaderSort
                   label="Address"
                   active={sortKey === "address"}
@@ -427,7 +427,7 @@ export default function OrderHistory() {
                   onClick={() => toggleSort("address")}
                 />
               </TableHead>
-              <TableHead>
+              <TableHead className="hidden md:table-cell">
                 <HeaderSort
                   label="Date"
                   active={sortKey === "date"}
@@ -484,9 +484,13 @@ export default function OrderHistory() {
                     <span className="text-xs">{o.user.name}</span>
                   </div>
                 </TableCell>
-                <TableCell className="py-2 text-xs">{o.project}</TableCell>
-                <TableCell className="py-2 text-xs">{o.address}</TableCell>
-                <TableCell className="py-2 text-xs">
+                <TableCell className="py-2 text-xs hidden md:table-cell">
+                  {o.project}
+                </TableCell>
+                <TableCell className="py-2 text-xs hidden md:table-cell">
+                  {o.address}
+                </TableCell>
+                <TableCell className="py-2 text-xs hidden md:table-cell">
                   <div className="flex items-center gap-2">
                     <Calendar className="size-3.5 text-muted-foreground" />
                     <span>{o.date}</span>
@@ -514,7 +518,7 @@ export default function OrderHistory() {
       </div>
 
       <Pagination className="pt-2">
-        <PaginationContent className="gap-2">
+        <PaginationContent className="gap-2 justify-center sm:justify-start">
           <PaginationItem>
             <button
               aria-label="Previous page"
