@@ -102,12 +102,11 @@ public/               # Static images/icons
 
 - **Componentization**: Every visual element (charts, tables, stats, etc.) is a reusable, typed component for maintainability and extensibility.
 - **Tailwind + Radix**: Combined for rapid styling and robust, accessible primitives.
-- **State Management**: Local state + a small context for global navigation.
 - **Accessibility**: Leveraged Radix and best practices for focus, roles, and keyboard nav.
 - **Responsiveness**: Built entirely mobile-first with breakpoints for a dashboard context.
 - **Data Gen**: Seeded with deterministic dummy data for tables and charts.
 - **Charts**: Used Recharts for flexibility and quick customization.
-- **Dark Mode**: Using
+- **Dark Mode**: Implementing dark mode was a bit challenging
 
 ### Improvements & Next Steps
 
